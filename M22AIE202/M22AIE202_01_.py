@@ -79,7 +79,7 @@ def evaluate_autoencoder(test_data):
     return mse,mae,mse_errors
 
 def plot_image(test_images, decoded_images):
-    n = 10  # How many digits we will display
+    n = 10 
     plt.figure(figsize=(20, 4))
     for i in range(n):
         plt.subplot(131)
@@ -109,9 +109,9 @@ def noise(images):
     return np.clip(noisy_array, 0.0, 1.0)
 
 def save_encoder_weights(filename):
-    encoder_layers = autoencoder.layers[:3]  # Assuming the encoder consists of the first 3 layers
+    encoder_layers = autoencoder.layers[:3] 
     for layer in encoder_layers:
-        layer.trainable = False  # To ensure the encoder layers are not further trained
+        layer.trainable = False  
     autoencoder.save_weights(filename)
 
 def visualize_images(original, masked, reconstructed):
