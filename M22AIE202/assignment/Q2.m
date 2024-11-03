@@ -7,7 +7,7 @@ function A = pei(n, b)
     end
 end
 
-n = 20;  % Matrix order
+n = 20; 
 b_values = linspace(0, 1, 100);
 condition_numbers = zeros(size(b_values));  
 
