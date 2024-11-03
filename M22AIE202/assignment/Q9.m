@@ -1,17 +1,14 @@
 function x = gauss_elimination(A, b)
-    % Gauss Elimination to solve the system Ax = b
     [n, m] = size(A);
     
     if n ~= m
-        error('Matrix A must be square');
+        error('not a square');
     end
     
-    % Augment the matrix A with the vector b
     AugmentedMatrix = [A b];
     
-    % Forward elimination
     for k = 1:n-1
-        % Partial pivoting (optional but recommended for numerical stability)
+        % pivoting
         [~, maxIndex] = max(abs(AugmentedMatrix(k:n, k)));
         maxIndex = maxIndex + k - 1;
         if maxIndex ~= k
@@ -24,17 +21,16 @@ function x = gauss_elimination(A, b)
         end
     end
     
-    % Back substitution
     x = zeros(n, 1);
     for i = n:-1:1
         x(i) = (AugmentedMatrix(i, end) - AugmentedMatrix(i, i+1:n) * x(i+1:n)) / AugmentedMatrix(i, i);
     end
 end
 
-% Example usage:
+% Example
 A = [6 2 2; 2 2/3 1/3; 1 2 -1];
 b = [-2; 1; 0];
 x = gauss_elimination(A, b);
 
-disp('Solution x = ');
+disp('x');
 disp(x);
